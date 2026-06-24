@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name ${DOMAIN_NAME} www.${DOMAIN_NAME} localhost;
+    server_name ${DOMAIN_NAME} www.${DOMAIN_NAME};
 
     # Konfiguracja proxy dla Next.js
     location / {
