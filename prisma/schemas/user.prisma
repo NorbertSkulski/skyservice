@@ -1,0 +1,10 @@
+model User { 
+  id    String  @id @default(cuid()) 
+  login String  @unique
+  password String
+  firstName  String?
+  lastName String?
+  phone String?
+  email String?  
+  address String?
+} 

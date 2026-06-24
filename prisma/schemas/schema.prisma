@@ -1,0 +1,22 @@
+/**
+ * 🚀 ŚCIĄGAWKA PRISMA - ZARZĄDZANIE ZMIANAMI W DB
+ * * SCENARIUSZ A: Zmieniasz plik `schema.prisma` -> Chcesz zaktualizować bazę
+ * 1. npx prisma migrate dev --name <nazwa_zmiany>  (Tworzy migrację SQL, zmienia bazę i robi generate)
+ * * SCENARIUSZ B: Baza zmieniła się bezpośrednio -> Chcesz zaciągnąć zmiany do kodu
+ * 1. npx prisma db pull                            (Nadpisuje schema.prisma na podstawie bazy)
+ * 2. npx prisma generate                           (Odświeża typy i podpowiedzi w edytorze)
+ * * DODATKOWE PRZYDATNE:
+ * - npx prisma studio                              (Otwiera przeglądarkowy panel do edycji danych)
+ * - npx prisma migrate reset                       (CAŁKOWITY RESET BAZY - usuwa dane i stawia strukturę od nowa)
+ */
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
