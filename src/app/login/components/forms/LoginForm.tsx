@@ -23,14 +23,17 @@ const LoginForm = (props: LoginFormProps) => {
             password: "test",
             redirect: false
         })
+        console.log("login user:",res)
 
         if(!res.error && res.url){
             const urlObj = new URL(res.url);
             const callbackUrl = urlObj.searchParams.get("callbackUrl")||"/dashboard";            
             router.push(callbackUrl);
+            return;
         }        
 
-        console.log("login user:",res)
+        console.log("Logowanie nie powiodło się !")
+        
     };
 
 
