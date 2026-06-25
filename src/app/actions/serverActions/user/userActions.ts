@@ -3,8 +3,8 @@
 import { prisma } from "@/db/prisma/prisma";
 import { User } from "@/generated/prisma/client";
 import bcrypt from "bcryptjs";
+import { UserType } from "../../clientActions/user/userActions";
 
-export type UserType = Omit<User,'id'>;
 
 
 export const getUsers = async () => {
