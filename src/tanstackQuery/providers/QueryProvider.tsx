@@ -15,6 +15,7 @@ export default function QueryProvider({ children }: { children: React.ReactNode 
             gcTime: 1000 * 60 * 60 * 24, 
             staleTime: 1000 * 60 * 5,   
             networkMode: 'offlineFirst', 
+            retry:3
           },
         },
       })
