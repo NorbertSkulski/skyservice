@@ -4,7 +4,7 @@ const Login = () => {
   return (
     <div >
       Login
-      <LoginForm data={{test:'1'}}/>
+      <LoginForm/>
 
     </div>
   );

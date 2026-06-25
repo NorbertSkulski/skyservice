@@ -1,12 +1,21 @@
 "use client"
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Bounce, toast } from "react-toastify";
 
 export const useAppMutation = (quertKey: Array<string>, mutationFunction: Function) => {
 
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: (mutationData: Object) => mutationFunction(mutationData),
+        mutationFn: async (mutationData: Object) => {
+            const response = await mutationFunction(mutationData);
+
+            if (response && response.error) {
+                throw new Error(response.error);
+            }
+
+            return response;
+        },
 
         onMutate: async (newPost) => {
 
@@ -23,6 +32,17 @@ export const useAppMutation = (quertKey: Array<string>, mutationFunction: Functi
         },
 
         onError: (err, newPost, context) => {
+            toast.error(err.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
             queryClient.setQueryData(quertKey, context?.previousData);
         },
 
