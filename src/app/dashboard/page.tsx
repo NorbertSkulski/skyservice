@@ -34,7 +34,7 @@ const Dashboard = () => {
             {data?.map((el, idx) => <p key={`user-${idx}`}>{el.firstName}</p>)}
             <SkyButton onClick={logOut} >Przycisk</SkyButton>
             <p>
-                <SkyButton onClick={() => createUser({ login: 'norbert3', password: 'test', firstName: 'Norbert2', lastName: 'Kowalski', phone: "32313213", email: "tes2t@test.pl" })} >Create user</SkyButton>
+                <SkyButton onClick={() => createUser({ login: 'norbert4', password: 'test', firstName: 'Norbert3', lastName: 'Kowalski', phone: "32313213", email: "tes2t@test.pl" })} >Create user</SkyButton>
             </p>
         </div>
     );

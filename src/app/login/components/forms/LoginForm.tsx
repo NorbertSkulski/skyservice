@@ -41,7 +41,10 @@ const LoginForm = () => {
     });
     
 
-    const onSubmit = (data: LoginFormProps) => console.log(data);
+    const onSubmit = (data: LoginFormProps) => {
+        console.log(data)
+        login();
+    };
 
     return (
         <FormProvider {...methods}>

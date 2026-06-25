@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 export type UserType = Omit<User,'id'>;
 
 export const useCreateMutationUser = () => {
-    return useAppMutation(["users"],(data:UserType)=>createUser({...data}))
+    return useAppMutation(["users"],(data:UserType)=>createUser(data))
 }
 
 export const useGetUsersQuery = ()=>{
