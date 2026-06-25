@@ -21,7 +21,7 @@ services:
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME}
     volumes:
-      - ./nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./nginx.conf.template.prod:/etc/nginx/templates/default.conf.template:ro
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/www/certbot
     depends_on:
