@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 
 
-type LoginFormProps = Pick<User,"login" | "password">
+type LoginFormProps = Pick<User,"login" | "password"> 
 
 
 
