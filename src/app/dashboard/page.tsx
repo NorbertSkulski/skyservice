@@ -4,14 +4,13 @@ import SkyButton from "@/components/buttons/SkyButton";
 import { getUsers } from "@/app/actions/serverActions/user/userActions";
 import { useQuery, } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
-import { useCreateMutationUser, UserType } from "../actions/clientActions/user/userActions";
+import { useCreateMutationUser, useGetUsersQuery, UserType } from "../actions/clientActions/user/userActions";
 
 const Dashboard = () => {
 
     const mutation = useCreateMutationUser();
 
-    const { data, isLoading } = useQuery({ queryKey: ['users'], queryFn: () => getUsers() })
-
+    const { data, isLoading } = useGetUsersQuery();
     console.log("Load data query:", data);
 
 
