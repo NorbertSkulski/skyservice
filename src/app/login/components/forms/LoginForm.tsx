@@ -1,6 +1,7 @@
 "use client"
 import SkyButton from "@/components/buttons/SkyButton";
 import SkyInput from "@/components/inputs/SkyInput";
+import { FieldDescription, FieldError } from "@/components/ui/field";
 import { User } from "@/generated/prisma/client";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -56,7 +57,7 @@ const LoginForm = () => {
 
     return (
         <FormProvider {...methods}>
-            <form className="border-blue-500 border-2 rounded-md p-2 flex flex-col justify-evenly items-center h-60 w-70" onSubmit={methods.handleSubmit(onSubmit)}>
+            <form className="border-blue-500 border-2 rounded-md p-10 flex flex-col justify-evenly items-center h-80 w-70" onSubmit={methods.handleSubmit(onSubmit)}>
 
                 <SkyInput
                     name="login"
@@ -72,11 +73,11 @@ const LoginForm = () => {
                     rules={{ required: 'Hasło jest obowiązkowe!' }}
                 />
 
-                <SkyButton type="submit">Zaloguj</SkyButton>
+                <SkyButton className="mb-2 bg-green-400 hover:bg-green-500" type="submit">Zaloguj</SkyButton>
 
-                <div className="h-10">
-                    {isLoading ? <span>Logowanie ...</span> : null}
-                    {(error && !isLoading) ? <span className="text-red-500">{error}</span> : null}
+                <div className="h-5">
+                    {isLoading ? <FieldDescription>Logowanie ...</FieldDescription> : null}
+                    {(error && !isLoading) ? <FieldError errors={[{ message: error }]} /> : null}
                 </div>
             </form>
         </FormProvider>
