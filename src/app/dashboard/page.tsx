@@ -1,8 +1,6 @@
 "use client"
 
 import SkyButton from "@/components/buttons/SkyButton";
-import { getUsers } from "@/app/actions/serverActions/user/userActions";
-import { useQuery, } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
 import { useCreateMutationUser, useGetUsersQuery, UserType } from "../actions/clientActions/user/userActions";
 
