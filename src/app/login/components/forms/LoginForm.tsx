@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-
+import "./rainbow.css"
 
 type LoginFormProps = Pick<User, "login" | "password">
 
@@ -56,31 +56,35 @@ const LoginForm = () => {
     };
 
     return (
-        <FormProvider {...methods}>
-            <form className="border-blue-500 border-2 rounded-md p-10 flex flex-col justify-evenly items-center h-80 w-70" onSubmit={methods.handleSubmit(onSubmit)}>
+        <div className="relative h-82 w-72 flex flex-col rounded-md justify-evenly items-center overflow-hidden">
+            <div className="z-0 rainbow"></div>
 
-                <SkyInput
-                    name="login"
-                    label="Login"
-                    type="text"
-                    rules={{ required: 'Login jest obowiązkowy!' }}
-                />
+            <FormProvider {...methods}>
+                <form className="border-blue-500 border-0 rounded-md p-10 flex flex-col justify-evenly items-center h-80 w-70 z-10 relative dark:bg-black bg-white" onSubmit={methods.handleSubmit(onSubmit)}>
 
-                <SkyInput
-                    name="password"
-                    type="password"
-                    label="Hasło"
-                    rules={{ required: 'Hasło jest obowiązkowe!' }}
-                />
+                    <SkyInput
+                        name="login"
+                        label="Login"
+                        type="text"
+                        rules={{ required: 'Login jest obowiązkowy!' }}
+                    />
 
-                <SkyButton className="mb-2 bg-green-400 hover:bg-green-500" type="submit">Zaloguj</SkyButton>
+                    <SkyInput
+                        name="password"
+                        type="password"
+                        label="Hasło"
+                        rules={{ required: 'Hasło jest obowiązkowe!' }}
+                    />
 
-                <div className="h-5">
-                    {isLoading ? <FieldDescription>Logowanie ...</FieldDescription> : null}
-                    {(error && !isLoading) ? <FieldError errors={[{ message: error }]} /> : null}
-                </div>
-            </form>
-        </FormProvider>
+                    <SkyButton className="mb-2 bg-green-400 hover:bg-green-500" type="submit">Zaloguj</SkyButton>
+
+                    <div className="h-5">
+                        {isLoading ? <FieldDescription>Logowanie ...</FieldDescription> : null}
+                        {(error && !isLoading) ? <FieldError errors={[{ message: error }]} /> : null}
+                    </div>
+                </form>
+            </FormProvider>
+        </div>
     );
 }
 
