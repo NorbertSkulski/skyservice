@@ -5,14 +5,15 @@ type SkyInputProps = {
   label: string
   type?: string
   rules?: object
+  className?:string
 }
 
-const SkyInput = ({ name, label, type = 'text', rules }: SkyInputProps) => {
+const SkyInput = ({ name, label, type = 'text', rules, className="" }: SkyInputProps) => {
 
   const { control } = useFormContext(); 
 
   return (
-    <div style={{ marginBottom: '1rem' }}>
+    <div className={className} style={{ marginBottom: '1rem' }}>
       <label style={{ display: 'block' }}>{label}</label>
       <Controller
         name={name}
