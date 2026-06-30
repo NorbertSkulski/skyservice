@@ -17,21 +17,21 @@ export const useAppMutation = (quertKey: Array<string>, mutationFunction: Functi
             return response;
         },
 
-        onMutate: async (newPost) => {
+        onMutate: async (newData) => {
 
             await queryClient.cancelQueries({ queryKey: quertKey });
 
             const previousData = queryClient.getQueryData(quertKey);
 
-            queryClient.setQueryData(['posts'], (old: any) => [
-                { id: Math.random().toString(), createdAt: new Date(), ...newPost },
+            queryClient.setQueryData([quertKey], (old: any) => [
+                { id: Math.random().toString(), createdAt: new Date(), ...newData },
                 ...(old || []),
             ]);
 
             return { previousData };
         },
 
-        onError: (err, newPost, context) => {
+        onError: (err, newData, context) => {
             toast.error(err.message, {
                 position: "top-right",
                 autoClose: 5000,
